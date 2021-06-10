@@ -563,6 +563,12 @@ class Build
       end
     end
 
+    if options[:hashed_faces]
+      p << {
+        url: "https://debbugs.gnu.org/cgi/bugreport.cgi?bug=41200;att=1;filename=0001-Store-frame-faces-in-hash-tables-instead-of-alists-V10.patch;msg=158"
+      }
+    end
+
     p
   end
 
@@ -971,6 +977,11 @@ if __FILE__ == $PROGRAM_NAME
       opts.on('--no-frame-refocus',
               'Apply no-frame-refocus patch (default: disabled)') do
         cli_options[:no_frame_refocus] = true
+      end
+
+      opts.on('--hashed-faces',
+              'Apply hashed faces patch (default: disabled)') do
+        cli_options[:hashed_faces] = true
       end
 
       opts.on('--[no-]github-auth',
